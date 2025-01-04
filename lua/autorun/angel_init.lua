@@ -10,6 +10,14 @@ AGCore.LOG = {
     ERROR = "ERROR"
 }
 
+-- Prints a message to the console with the AGCore prefix
+-- @param msg: The message to print to the console
+function AGCore.Print( msg )
+
+    print( AGCore.Prefix .. msg )
+
+end
+
 -- Wrapper for LUA includes 
 -- @param file: Path to the LUA file that needs to be included
 function AGCore:IncludeLUA( file )
@@ -17,9 +25,9 @@ function AGCore:IncludeLUA( file )
     if file then 
         AddCSLuaFile( file )
         include( file )
-        print(AGCore.Prefix .. "One or several files were included through the wrapper!")
+        AGCore.Print("One or several files were included through the wrapper!")
     else 
-        print( AGCore.Prefix .. "Core include is nil or invalid!" )
+        AGCore.Print("Core include is nil or invalid!" )
 
     end
 end
