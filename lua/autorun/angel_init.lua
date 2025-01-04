@@ -1,4 +1,3 @@
-
 module( "angelcore", package.seeall ) 
 local AGCore = AGCore or {}
 
