@@ -86,11 +86,6 @@ function AGCore:Log(logEvent,logType)
 
     local logMsg = string.format("[%s] %s", logType, logEvent)
 
-
-    
-
-
-
     AGCore.Print(logMsg)
 
 end
@@ -99,7 +94,9 @@ function AGCore.AnimSys( result, offset )
     
     local offset = offset or 0
     local animCur = math.sin(CurTime() * offset ) * result
+    
     return animCur
+
 end
 
 
