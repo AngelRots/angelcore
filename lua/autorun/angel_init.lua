@@ -1,5 +1,5 @@
 module( "angelcore", package.seeall ) 
-local AGCore = AGCore or {}
+AGCore = AGCore or {}
 
 AGCore.Version = "1.0.0"
 AGCore.Prefix = "[AGCore] - "
@@ -25,11 +25,31 @@ function AGCore:IncludeLUA( file )
     if file then 
         AddCSLuaFile( file )
         include( file )
-        AGCore.Print("One or several files were included through the wrapper!")
+        AGCore.Print("The following file has been included: " .. file)
     else 
         AGCore.Print("Core include is nil or invalid!" )
 
     end
+end
+
+-- Function for including LUA files from directories
+-- @param directory: Directory path containing the LUA files
+-- @see wiki.facepunch.com/gmod/Global.include
+function AGCore:IncludeDir( directory )
+	directory = directory .. "/"
+
+	local files, directories = file.Find( directory .. "*", "LUA" )
+
+	for _, v in ipairs( files ) do
+		if string.EndsWith( v, ".lua" ) then
+			AddCSLuaFile( v, directory )
+		end
+	end
+
+	for _, v in ipairs( directories ) do
+		print( "[AUTOLOAD] Directory: " .. v )
+		AGCore:IncludeDir( directory .. v )
+	end
 end
 
 -- Wrapper for including LUA files from tables
@@ -62,3 +82,5 @@ function AGCore:Log(logEvent,logType)
 end
 
 AGCore.Print("AngelCore loaded!")
+
+
