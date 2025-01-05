@@ -27,9 +27,9 @@ function AGCore:IncludeLUA( file )
     if file then 
         AddCSLuaFile( file )
         include( file )
-        AGCore.Print("The following file has been included: " .. file)
+        self.Print("The following file has been included: " .. file)
     else 
-        AGCore.Print("Core include is nil or invalid!" )
+        self.Print("Core include is nil or invalid!" )
 
     end
 end
@@ -44,13 +44,13 @@ function AGCore:IncludeDir( directory )
 
 	for _, v in ipairs( files ) do
 		if string.EndsWith( v, ".lua" ) then
-			AGCore:IncludeLUA( v, directory )
+			self:IncludeLUA( v, directory )
 		end
 	end
 
 	for _, v in ipairs( directories ) do
 		print( "[AUTOLOAD] Directory: " .. v )
-		AGCore:IncludeDir( directory .. v )
+		self:IncludeDir( directory .. v )
 	end
 end
 
@@ -72,21 +72,21 @@ function AGCore:Log(logEvent,logType)
 
     logType = AGCore.LOG[logType]
 
-    if not table.HasValue(AGCore.LOG, logType) then
-        logType = AGCore.LOG[4]
+    if not table.HasValue(self.LOG, logType) then
+        logType = self.LOG[4]
     end
 
-    if logType == AGCore.LOG[3] then
+    if logType == self.LOG[3] then
         error(logEvent,1)
     end
 
-    if logType == AGCore.LOG[2] then 
+    if logType == self.LOG[2] then 
         ErrorNoHalt(logEvent)
     end
 
     local logMsg = string.format("[%s] %s", logType, logEvent)
 
-    AGCore.Print(logMsg)
+    self.Print(logMsg)
 
 end
 
@@ -94,7 +94,7 @@ function AGCore.AnimSys( result, offset )
     
     local offset = offset or 0
     local animCur = math.sin(CurTime() * offset ) * result
-    
+
     return animCur
 
 end
