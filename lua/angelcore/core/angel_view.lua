@@ -1,0 +1,3 @@
+
+AGCore = AGCore or {}
+
