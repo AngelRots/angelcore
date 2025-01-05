@@ -4,7 +4,12 @@ AGCore = AGCore or {}
 AGCore.Version = "1.0.0"
 AGCore.Prefix = "[AGCore] - "
 
-AGCore.LOG = { "INFO", "WARNING", "ERROR", "UNDEFINED" }
+AGCore.LOG = { 
+    "INFO", 
+    "WARNING", 
+    "ERROR", 
+    "UNDEFINED" 
+}
 
 
 -- Prints a message to the console with the AGCore prefix.
@@ -67,11 +72,11 @@ function AGCore:Log(logEvent,logType)
 
     logType = AGCore.LOG[logType]
 
-    if logType == nil then 
+    if not table.HasValue(AGCore.LOG, logType) then
         logType = AGCore.LOG[4]
     end
 
-    if logType == AGCore.LOG[3] then 
+    if logType == AGCore.LOG[3] then
         error(logEvent,1)
     end
 
@@ -100,7 +105,7 @@ end
 
 
 
-AGCore:Log("AGCore has been initialized!", 1)
+AGCore:Log("AGCore has been initialized!",1)
 
 AGCore:IncludeLUA("angelcore/core/angel_view.lua")
 
