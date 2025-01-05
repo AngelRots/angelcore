@@ -1,7 +1,7 @@
 module( "angelcore", package.seeall ) 
 AGCore = AGCore or {}
 
-AGCore.Version = "1.0.0"
+AGCore.Version = "1.0.1"
 AGCore.Prefix = "[AGCore] - "
 
 AGCore.LOG = { 
