@@ -60,3 +60,5 @@ function AGCore:Log(logEvent,logType)
     print(logMsg)
 
 end
+
+print("AngelCore loaded!")
