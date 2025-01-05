@@ -4,7 +4,7 @@ AGCore = AGCore or {}
 AGCore.Version = "1.0.0"
 AGCore.Prefix = "[AGCore] - "
 
-AGCore.LOG = {"INFO", "WARNING", "ERROR","UNDEFINED"}
+AGCore.LOG = { "INFO", "WARNING", "ERROR", "UNDEFINED" }
 
 
 -- Prints a message to the console with the AGCore prefix.
@@ -69,6 +69,14 @@ function AGCore:Log(logEvent,logType)
 
     if logType == nil then 
         logType = AGCore.LOG[4]
+    end
+
+    if logType == AGCore.LOG[3] then 
+        error(logEvent,1)
+    end
+
+    if logType == AGCore.LOG[2] then 
+        ErrorNoHalt(logEvent)
     end
 
     local logMsg = string.format("[%s] %s", logType, logEvent)
