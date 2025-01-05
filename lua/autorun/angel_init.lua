@@ -42,7 +42,7 @@ function AGCore:IncludeDir( directory )
 
 	for _, v in ipairs( files ) do
 		if string.EndsWith( v, ".lua" ) then
-			AddCSLuaFile( v, directory )
+			AGCore:IncludeLUA( v, directory )
 		end
 	end
 
