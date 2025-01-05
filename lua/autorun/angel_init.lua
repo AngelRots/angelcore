@@ -70,7 +70,7 @@ end
 -- @see AGCore.LOG
 function AGCore:Log(logEvent,logType)
 
-    logType = AGCore.LOG[logType]
+    logType = self.LOG[logType]
 
     if not table.HasValue(self.LOG, logType) then
         logType = self.LOG[4]
