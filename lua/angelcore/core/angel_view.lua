@@ -1,4 +1,1 @@
-if not CLIENT then return end 
-
-AGCore = AGCore or {}
-
+local AGCore = AGCore or {}
