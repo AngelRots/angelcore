@@ -10,7 +10,7 @@ AGCore.LOG = {
     ERROR = "ERROR"
 }
 
--- Prints a message to the console with the AGCore prefix
+-- @desc: Prints a message to the console with the AGCore prefix
 -- @param msg: The message to print to the console
 function AGCore.Print( msg )
 
@@ -18,7 +18,7 @@ function AGCore.Print( msg )
 
 end
 
--- Wrapper for LUA includes 
+-- @desc: Wrapper for LUA includes 
 -- @param file: Path to the LUA file that needs to be included
 function AGCore:IncludeLUA( file )
 
@@ -32,7 +32,7 @@ function AGCore:IncludeLUA( file )
     end
 end
 
--- Function for including LUA files from directories
+-- @desc: Function for including LUA files from directories
 -- @param directory: Directory path containing the LUA files
 -- @see wiki.facepunch.com/gmod/Global.include
 function AGCore:IncludeDir( directory )
@@ -52,7 +52,7 @@ function AGCore:IncludeDir( directory )
 	end
 end
 
--- Wrapper for including LUA files from tables
+-- @desc: Wrapper for including LUA files from tables
 -- @param files: Table containing the paths of the LUA files
 function AGCore:IncludeTable( files )
 
@@ -62,7 +62,7 @@ function AGCore:IncludeTable( files )
 
 end
 
--- Logging function  
+-- @desc: Logging function  
 -- @param logEvent: The string to print to the console
 -- @param logType: The type of log to print ex. INFO, WARNING, ERROR
 -- @see AGCore.LOG
@@ -81,6 +81,18 @@ function AGCore:Log(logEvent,logType)
 
 end
 
+function AGCore.AnimSys( result, offset )  
+    
+    local offset = offset or 0
+    local animCur = math.sin(CurTime() * offset ) * result
+    return animCur
+end
+
+
+
+
+
 AGCore.Print("AngelCore loaded!")
 
+AGCore:IncludeLUA("angelcore/core/angel_view.lua")
 
