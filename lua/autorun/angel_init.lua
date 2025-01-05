@@ -4,11 +4,8 @@ AGCore = AGCore or {}
 AGCore.Version = "1.0.0"
 AGCore.Prefix = "[AGCore] - "
 
-AGCore.LOG = {
-    INFO = "INFO",
-    WARNING = "WARNING",
-    ERROR = "ERROR"
-}
+AGCore.LOG = {"INFO", "WARNING", "ERROR","UNDEFINED"}
+
 
 -- Prints a message to the console with the AGCore prefix.
 -- @param msg The message to print to the console
@@ -64,20 +61,24 @@ end
 
 -- Logging function.  
 -- @param logEvent The string to print to the console
--- @param logType The type of log to print ex. INFO, WARNING, ERROR
+-- @param logType The keyvalue of log to print as a string ( 1 INFO, 2 WARNING, 3 ERROR )
 -- @see AGCore.LOG
 function AGCore:Log(logEvent,logType)
 
-    local logType = logType or "INFO"
+    logType = AGCore.LOG[logType]
 
-    if not AGCore.LOG[logType] then 
-        logType = "INFO"
+    if logType == nil then 
+        logType = AGCore.LOG[4]
     end
 
+    local logMsg = string.format("[%s] %s", logType, logEvent)
 
-    local logMsg = string.format("[%s] - %s", logType, logEvent)
 
-    print(logMsg)
+    
+
+
+
+    AGCore.Print(logMsg)
 
 end
 
@@ -91,8 +92,7 @@ end
 
 
 
-
-AGCore.Print("AngelCore loaded!")
+AGCore:Log("AGCore has been initialized!", 1)
 
 AGCore:IncludeLUA("angelcore/core/angel_view.lua")
 
