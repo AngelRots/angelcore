@@ -61,4 +61,4 @@ function AGCore:Log(logEvent,logType)
 
 end
 
-print("AngelCore loaded!")
+AGCore.Print("AngelCore loaded!")
