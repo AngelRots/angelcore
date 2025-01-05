@@ -10,16 +10,16 @@ AGCore.LOG = {
     ERROR = "ERROR"
 }
 
--- @desc: Prints a message to the console with the AGCore prefix
--- @param msg: The message to print to the console
+-- Prints a message to the console with the AGCore prefix.
+-- @param msg The message to print to the console
 function AGCore.Print( msg )
 
     print( AGCore.Prefix .. msg )
 
 end
 
--- @desc: Wrapper for LUA includes 
--- @param file: Path to the LUA file that needs to be included
+-- Wrapper for LUA includes. 
+-- @param file Path to the LUA file that needs to be included
 function AGCore:IncludeLUA( file )
 
     if file then 
@@ -32,8 +32,8 @@ function AGCore:IncludeLUA( file )
     end
 end
 
--- @desc: Function for including LUA files from directories
--- @param directory: Directory path containing the LUA files
+-- Function for including LUA files from directories.
+-- @param directory Directory path containing the LUA files
 -- @see wiki.facepunch.com/gmod/Global.include
 function AGCore:IncludeDir( directory )
 	directory = directory .. "/"
@@ -52,8 +52,8 @@ function AGCore:IncludeDir( directory )
 	end
 end
 
--- @desc: Wrapper for including LUA files from tables
--- @param files: Table containing the paths of the LUA files
+-- Wrapper for including LUA files from tables.
+-- @param files Table containing the paths of the LUA files
 function AGCore:IncludeTable( files )
 
  for _, file in pairs(files) do 
@@ -62,9 +62,9 @@ function AGCore:IncludeTable( files )
 
 end
 
--- @desc: Logging function  
--- @param logEvent: The string to print to the console
--- @param logType: The type of log to print ex. INFO, WARNING, ERROR
+-- Logging function.  
+-- @param logEvent The string to print to the console
+-- @param logType The type of log to print ex. INFO, WARNING, ERROR
 -- @see AGCore.LOG
 function AGCore:Log(logEvent,logType)
 
