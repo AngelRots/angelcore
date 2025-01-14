@@ -87,7 +87,7 @@ function AGCore:Log(logEvent,logType)
     local logMsg = string.format("[%s] %s", logType, logEvent)
 
     self.Print(logMsg)
-
+    
 end
 
 function AGCore.AnimSys( result, offset )  
@@ -98,6 +98,22 @@ function AGCore.AnimSys( result, offset )
     return animCur
 
 end
+
+-- Function for inverting the color.
+-- @param color The color to invert
+-- @return The inverted color
+function AGCore.ColorInvert( color )
+
+    return Color( 255 - color.r, 255 - color.g, 255 - color.b, color.a )
+
+end
+
+function AGCore.ColorDumpValues( color )
+
+    return color.r, color.g, color.b, color.a
+
+end
+
 
 
 
